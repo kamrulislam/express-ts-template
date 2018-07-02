@@ -1,9 +1,6 @@
 import { Request, Response } from "express";
+import {apiVersion} from "../app";
 
-/**
- * GET /
- * Home page.
- */
 export let index = (req: Request, res: Response) => {
-	res.render("index", { title: "Express" });
+  res.json(`Welcome to WRAS API ${apiVersion}`);
 };
