@@ -4,12 +4,13 @@
 		"module": "commonjs",
 		"target": "es6",
 		"noImplicitAny": true,
-		"moduleResolution": "node",
+		"moduleResolution": "classic",
 		"sourceMap": true,
 		"outDir": "dist",
 		"rootDir": "src",
 		"lib": ["es5", "dom"],
 		"baseUrl": ".",
+		"resolveJsonModule": true,
 		"paths": {
 			"*": [
 				"node_modules/*",
