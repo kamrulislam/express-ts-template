@@ -62,6 +62,7 @@
 				"property-declaration": "onespace",
 				"variable-declaration": "onespace"
 			}
-		]
+		],
+		"quotemark": [true, "single", "jsx-double"]
 	}
 }
