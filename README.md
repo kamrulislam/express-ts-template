@@ -1,5 +1,12 @@
 # Express TypeScript template
 
+This is a customised version:
+
+```bash
+cd to your project.
+git archive --remote=git@github.com:SpatialVision/express-ts-template.git HEAD | tar xf -
+```
+
 # Pre-reqs
 - Install [Node.js](https://nodejs.org/en/)
 - Install [VS Code](https://code.visualstudio.com/)

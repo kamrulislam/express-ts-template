@@ -57,12 +57,15 @@
 			},
 			{
 				"call-signature": "onespace",
-				"index-signature": "onespace",
+				"index-signature": "nospace",
 				"parameter": "onespace",
 				"property-declaration": "onespace",
 				"variable-declaration": "onespace"
 			}
 		],
-		"quotemark": [true, "single", "jsx-double"]
+		"quotemark": [true, "single", "jsx-double"],
+		"whitespace": [false, "check-branch", "check-typecast"],
+		"member-access": [true, "no-public"]
+
 	}
 }

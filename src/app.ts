@@ -1,5 +1,13 @@
-import * as pkg from '../package.json';
-export const apiVersion: string = pkg.version;
+import * as dotenv from 'dotenv';
+dotenv.config();
+import env from './app-env';
+env.init(process.env.TARGET_ENV);
+
+// import * as version from './version.json';
+// import R = require('ramda');
+// const { prop } = R;
+// console.log('version: %j', version);
+// export const apiVersion: string = prop('version', version);
 
 import * as express from 'express';
 // Routes
