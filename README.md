@@ -5,7 +5,7 @@ This is a customised version:
 ```bash
 cd to your project.
 curl -vL https://api.github.com/repos/SpatialVision/express-ts-template/tarball/develop | \
-tar xfz - | DIR=`ls`; mv $DIR/* . && mv $DIR/.* . && rm -fr $DIR
+tar xfz - && DIR=`ls |grep SpatialVision` && mv $DIR/* .; mv $DIR/.* .; rm -fr $DIR
 
 
 ```
