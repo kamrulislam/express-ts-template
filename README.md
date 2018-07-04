@@ -4,8 +4,10 @@ This is a customised version:
 
 ```bash
 cd to your project.
-curl https://api.github.com/repos/SpatialVision/express-ts-template.git/tarball/develop | tar xf -
-git archive --remote=git@github.com:SpatialVision/express-ts-template.git HEAD | tar xf -
+curl -vL https://api.github.com/repos/SpatialVision/express-ts-template/tarball/develop | \
+tar xfz - | DIR=`ls`; mv $DIR/* . && mv $DIR/.* . && rm -fr $DIR
+
+
 ```
 
 # Pre-reqs
