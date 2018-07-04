@@ -4,7 +4,7 @@
 		"max-line-length": {
 			"options": [120]
 		},
-		"indent": [true, "tabs"],
+		"indent": [true, "spaces", 2],
 		"variable-name": [
 			true,
 			"ban-keywords",

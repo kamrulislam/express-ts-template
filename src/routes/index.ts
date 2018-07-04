@@ -1,6 +1,6 @@
-import { Router } from "express";
-import * as welcome from "../welcome/index";
+import { Router } from 'express';
+import * as welcome from '../welcome/index';
 
 export const index = Router();
 
-index.get("/", welcome.index);
+index.get('/', welcome.index);
