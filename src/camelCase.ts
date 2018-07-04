@@ -5,6 +5,6 @@ import * as _ from 'lodash';
 
 const camelCase = (snakeCaseObject: any): any => {
   return _.mapKeys(snakeCaseObject, (value, key) => _.camelCase(key.toString()));
-}
+};
 
 export { camelCase };

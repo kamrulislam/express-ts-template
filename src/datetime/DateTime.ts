@@ -1,47 +1,47 @@
-"use strict";
-const moment = require('moment-timezone');
+// const moment = require('moment-timezone');
+import * as moment from 'moment-timezone';
 const timezone = 'Australia/Sydney';
 const datetimeformat = 'YYYY-MM-DD HH:mm:ss';
 const datetimeformatkebab = 'YYYY-MM-DD-HH-mm-ss';
 const datetimeformatiso = 'YYYY-MM-DDTHH:mm:ss';
 
 class Datetime {
-  momentTz() {
+  momentTz () {
     return moment().tz(timezone);
   }
 
-  moment() {
+  moment () {
     return moment();
   }
 
-  currentTimestampKebab() {
-    return moment().tz(timezone).format(datetimeformatkebab)
+  currentTimestampKebab () {
+    return moment().tz(timezone).format(datetimeformatkebab);
   }
 
-  currentTimestamp() {
-    return moment().tz(timezone).format(datetimeformat)
+  currentTimestamp () {
+    return moment().tz(timezone).format(datetimeformat);
   }
 
-  currentTimestampIso() {
-    return moment().tz(timezone).format(datetimeformatiso)
+  currentTimestampIso () {
+    return moment().tz(timezone).format(datetimeformatiso);
   }
 
-  dateParamtoISOString(dateParam: Date) {
+  dateParamtoISOString (dateParam: Date) {
     return moment(dateParam).tz(timezone).format(datetimeformatiso);
   }
 
-  formatDateWithFormat(dateToFormat:any, format:any) {
+  formatDateWithFormat (dateToFormat: any, format: any) {
     if (dateToFormat) {
-      return moment(dateToFormat).format(format)
+      return moment(dateToFormat).format(format);
     }
-    return null
+    return null;
   }
 
-  formatDateTZ(dateToFormat:any) {
+  formatDateTZ (dateToFormat: any) {
     if (dateToFormat) {
-      return moment(dateToFormat).tz(timezone).format("DD/MM/YYYY")
+      return moment(dateToFormat).tz(timezone).format('DD/MM/YYYY');
     }
-    return null
+    return null;
   }
 
   durationFromCurrentInMinutes = (toCheck: any): number => {
@@ -51,4 +51,3 @@ class Datetime {
 }
 
 export const datetime = new Datetime();
-

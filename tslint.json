@@ -65,7 +65,10 @@
 		],
 		"quotemark": [true, "single", "jsx-double"],
 		"whitespace": [false, "check-branch", "check-typecast"],
-		"member-access": [true, "no-public"]
-
+		"member-access": [true, "no-public"],
+		"no-unused-expression": false,
+		"rulesDirectory": [
+			"tslint-no-unused-expression-chai"
+		]
 	}
 }
