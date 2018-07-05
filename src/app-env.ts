@@ -1,8 +1,9 @@
 /**
  * Created by hxg on 9/10/17.
  */
-import traverse from 'traverse';
-import {default as log} from './logs/Log';
+import * as traverse from 'traverse';
+import { createLog } from './logs/logging';
+const log = createLog('app-env');
 
 class AppEnv {
   flattern (instance: any, envKey: string): any  {
