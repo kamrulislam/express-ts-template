@@ -53,12 +53,6 @@ class AppEnv {
       process.env[key] = flats[key];
       log.info('initEnv key: %s, value: %s', key, process.env[key]);
     });
-
-    const version = require('../package.json').version;
-
-    process.env.API_VERSION = version;
-
-    log.info('initEnv API_VERSION: %s', version);
   }
 }
 const env = new AppEnv();
