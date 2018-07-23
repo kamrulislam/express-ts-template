@@ -1,7 +1,7 @@
 /**
  * Created by hxg on 9/10/17.
  */
-import * as traverse from 'traverse';
+import traverse = require('traverse');
 import { createLog } from './logs/logging';
 const log = createLog(__filename);
 
@@ -26,10 +26,6 @@ class AppEnv {
     return flat;
   }
   init (targetEnv: any) {
-    // process.env.FEN_CACHE_API_REQUEST_TIMEOUT = '10000';
-    // log.info('initEnv targetEnv: %s, process.env.FEN_CACHE_API_REQUEST_TIMEOUT: %s',
-    // targetEnv, process.env.FEN_CACHE_API_REQUEST_TIMEOUT);
-
     if(!targetEnv) {
       log.info('initEnv targetEnv is empty using .env');
       return;
