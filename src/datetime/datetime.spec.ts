@@ -1,6 +1,8 @@
-require('dotenv').config();
-import {datetime} from "../datetime/DateTime";
-import {default as log} from '../logs/Log';
+import * as dotenv from 'dotenv';
+dotenv.config();
+import {datetime} from '../datetime/DateTime';
+import { createLog } from '../logs/logging';
+const log = createLog(__filename);
 
 describe('datetime', () => {
 

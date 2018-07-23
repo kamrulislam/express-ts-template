@@ -1,8 +1,9 @@
 /**
  * Created by hxg on 9/10/17.
  */
-import traverse from 'traverse';
-import {default as log} from './logs/Log';
+import * as traverse from 'traverse';
+import { createLog } from './logs/logging';
+const log = createLog(__filename);
 
 class AppEnv {
   flattern (instance: any, envKey: string): any  {
@@ -52,6 +53,12 @@ class AppEnv {
       process.env[key] = flats[key];
       log.info('initEnv key: %s, value: %s', key, process.env[key]);
     });
+
+    const version = require('../package.json').version;
+
+    process.env.API_VERSION = version;
+
+    log.info('initEnv API_VERSION: %s', version);
   }
 }
 const env = new AppEnv();

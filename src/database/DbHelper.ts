@@ -1,11 +1,12 @@
 /**
  * Created by kis on 3/7/18.
  */
-import {default as R} from 'ramda';
-const { equals } = R;
+import * as R from 'ramda';
+const { equals, isNil } = R;
 import connection from './Connection';
-import {default as log} from '../logs/Log';
 import { camelCase } from '../camelCase';
+import { createLog } from '../logs/logging';
+const log = createLog(__filename);
 const ERROR_404 = '404';
 
 export class DbHelper {
@@ -26,7 +27,7 @@ export class DbHelper {
     return connection.getDb().any(query, params).then((rows: any) => {
       const first = rows[0];
       log.debug('DbHelper.findOne first: %s', first);
-      if(R.isNil(first)) {
+      if(isNil(first)) {
         throw new Error(ERROR_404);
       }
       return rows[0];
@@ -41,7 +42,7 @@ export class DbHelper {
       });
   }
 
-  private transform (rows: any) {
+  transform (rows: any) {
     log.debug('DbHelper.transform rows: %s', rows.length);
     return rows.map( (row: any) => {
       return camelCase(row).details;

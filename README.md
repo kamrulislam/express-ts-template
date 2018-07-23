@@ -1,6 +1,12 @@
 # Express TypeScript template
 
-This is a customised version:
+This is a customised version of the template.
+
+* Dockernizable
+* Logging using winston
+* Database connection to postgresql using pg-promise
+* Testing using mocha/chai
+* Async handler for async/await syntax
 
 ```bash
 cd to your project.
@@ -20,7 +26,9 @@ git clone https://github.com/greenroach/express-ts-template.git
 - Install dependencies
 ```
 cd <project_name>
-npm install
+nvm use
+npm i
+npm start - watch 
 ```
 - Build and run the project
 ```
@@ -54,4 +62,5 @@ You will probably have multiple node processes running, so you need to find the 
 Now just set your breakpoints and go!
 
 --------------------
-Based on [TypeScript Node Starter](https://github.com/Microsoft/TypeScript-Node-Starter) and [Express Generator](https://github.com/expressjs/generator)
+Based on 
+[TypeScript Node Starter](https://github.com/Microsoft/TypeScript-Node-Starter) and [Express Generator](https://github.com/expressjs/generator)

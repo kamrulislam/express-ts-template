@@ -6,7 +6,7 @@
 		"noImplicitAny": true,
 		"moduleResolution": "node",
 		"sourceMap": true,
-		"outDir": "dist",
+		"outDir": "lib",
 		"rootDir": "src",
 		"lib": ["es5", "dom"],
 		"baseUrl": ".",
