@@ -9,8 +9,9 @@ program
 
 console.log('host-ip containerName: %s', program.containerName);
 
-if (R.isNil(program.containerName)) {
-  throw new Error('You must provide a container name to find the ip host address');
+if (isNilOrEmpty(program.containerName)) {
+  shell.echo('localhost');
+  return;
 }
 
 const shell = require('shelljs');
