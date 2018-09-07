@@ -9,7 +9,7 @@ const datetimeformatiso = 'YYYY-MM-DDTHH:mm:ss';
 
 export const toDbDate = (val: string): string => {
   return isNil(val) ? null : val;
-}
+};
 
 class Datetime {
   momentTz () {

@@ -9,11 +9,9 @@
 		"build": "npm run build-ts && npm run tslint",
 		"serve": "node lib/server.js",
 		"watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
-		"watch-node": "nodemon lib/server.js",
 		"build-ts": "tsc",
-		"watch-ts": "tsc -w",
 		"tslint": "tslint -c tslint.json -p tsconfig.json",
-		"tslist-fix": "tslint --fix -c tslint.json -p tsconfig.json",
+		"tslint-fix": "tslint --fix -c tslint.json -p tsconfig.json",
 		"debug": "npm run build && npm run watch-debug",
 		"serve-debug": "nodemon --inspect lib/server.js",
 		"watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\"",
@@ -25,7 +23,7 @@
 		"test-one": "mocha --timeout 90000 --watch --require ts-node/register --watch-extensions ts $1",
 		"test-one-debug": "ndb mocha --timeout 90000 --watch --require ts-node/register --watch-extensions ts $1",
 		"version": "node scripts/api-version",
-		"host-ip": "node scripts/host-ip API_CONTAINER_NAME"
+		"host-ip": "node scripts/host-ip -c API_CONTAINER_NAME"
 	},
 	"author": "",
 	"license": "ISC",

@@ -21,7 +21,7 @@ export class DbHelper {
       });
   }
 
-  findOne (query: string, params: any): Promise<any> {
+  findOne (query: string, params?: any): Promise<any> {
     log.debug('DbHelper.findOne query: %s, params: %j', query, params);
     return connection.getDb().any(query, params).then((rows: any) => {
       const first = rows[0];
@@ -43,7 +43,7 @@ export class DbHelper {
 
   transform (rows: any) {
     log.debug('DbHelper.transform rows: %s', rows.length);
-    return rows.map( (row: any) => {
+    return rows.map((row: any) => {
       return camelCase(row).details;
     });
   }
