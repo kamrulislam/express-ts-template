@@ -15,14 +15,31 @@ tar xfz - && DIR=`ls |grep SpatialVision` && mv $DIR/* .; mv $DIR/.* .; rm -fr $
 ```
 
 # Pre-reqs
-- Install [Node.js](https://nodejs.org/en/)
-- Install [VS Code](https://code.visualstudio.com/)
+- Install nvm 
 - Build and run the project
 ```
-npm run build
+nvm install
+nvm use
+npm i
 npm start
 ```
 Navigate to `http://localhost:3000`
+
+
+# .env
+```bash
+
+API_VERSION=1.0.2
+API_LOG_LEVEL=debug
+
+POSTGRES_HOST=localhost
+POSTGRES_PORT=7432
+POSTGRES_DATABASE=db
+POSTGRES_USER=user
+POSTGRES_PASSWORD=password
+
+AUTH0_DOMAIN=your-auth0-domain.au.auth0.com
+```
 
 --------------------
 Based on 
