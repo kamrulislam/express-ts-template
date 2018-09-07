@@ -1,58 +1,43 @@
 import * as winston from 'winston';
-import {Logger} from "winston";
-const { createLogger, format, transports } = winston;
-const { combine, timestamp, label, prettyPrint, printf, splat, simple } = format;
-import * as R from 'ramda';
-const { contains } = R;
-import * as moment from 'moment-timezone';
-import {timezone} from "../datetime/DateTime";
+import {Logger} from 'winston';
+import {LogLevel} from './LogLevel';
 
-const myFormat = printf(info => {
+const { createLogger, format } = winston;
+const { combine, timestamp, label, printf, splat } = format;
+import { contains, isNil } from '../ramda-functions';
+
+const myFormat = printf((info) => {
   return `${info.timestamp} [${info.label}] ${info.level}: ${info.message}`;
 });
 
-// const appendTimestamp = format((info, opts) => {
-//   if(opts.tz)
-//     info.timestamp = moment().tz(opts.tz).format();
-//   return info;
-// });
+const createLogLabel = (logLabel: string): string => {
+  return contains('/', logLabel) ?
+    logLabel.split(/[\\/]/).slice(-2).join('/') :
+    logLabel;
+  // return contains('/', logLabel)?logLabel.split(/[\\/]/).pop() : logLabel;
+};
 
-// const logger = createLogger({
-//   level: 'info',
-//   format:
-//     combine(
-//       label({ label: 'default' }),
-//       timestamp(),
-//       splat(),
-//       myFormat
-//     ),
-//   transports: [
-//     new winston.transports.Console()
-//     // - Write to all logs with level `info` and below to `combined.log`
-//     // - Write all logs error (and below) to `error.log`.
-//     //new winston.transports.File({ filename: 'error.log', level: 'error' }),
-//     //new winston.transports.File({ filename: 'combined.log' })
-//   ]
-// });
-
-export const createLog = (logLabel: string): Logger => {
-  const label1 = contains('/', logLabel)?logLabel.split(/[\\/]/).pop() : logLabel;
-  //appendTimestamp({ tz: timezone }),
-
+/**
+ *
+ * @param {string} logLabel you should use __filename so the log can show you where
+ * @param {LogLevel} logLevel
+ * @returns {winston.Logger}
+ */
+export const createLog = (logLabel: string, logLevel?: LogLevel): Logger => {
   return createLogger({
-    level: 'info',
+    level: isNil(logLevel) ? process.env.API_LOG_LEVEL : logLevel.toString(),
     format:
       combine(
-        label({ label: label1 }),
+        label({ label: createLogLabel(logLabel) }),
         timestamp(),
         splat(),
-        myFormat
+        myFormat,
       )
     ,
     transports: [
-      new winston.transports.Console()
-    ]
+      new winston.transports.Console(),
+    ],
   });
-}
+};
 
-//export default logger;
+// export default logger;

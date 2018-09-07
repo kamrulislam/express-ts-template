@@ -2,18 +2,17 @@ import * as dotenv from 'dotenv';
 import * as cors from 'cors';
 import * as nocache from 'nocache';
 import * as bodyParser from 'body-parser';
+import * as express from 'express';
+import {NextFunction} from 'express';
+import {isNil, prop} from './ramda-functions';
+
 dotenv.config();
 import env from './app-env';
 env.init(process.env.TARGET_ENV);
 
-import * as express from 'express';
-import { index as sightings } from './sightings/index';
-
 // routes
 import {index} from './routes/index';
-import {NextFunction} from 'express';
 
-import { prop, isNil } from './ramda-functions';
 
 export const app = express();
 

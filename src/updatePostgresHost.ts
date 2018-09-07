@@ -8,12 +8,11 @@ const {
 
 export const updateDbToHostIp = (): void => {
   const host: string = shell.exec('node scripts/host-ip', {silent:true}).stdout.toString().trim();
-  log.info('host: %s', host);
+  log.debug('updateDbToHostIp host: %s', host);
 
   if(isNil(host)) {
-    throw new Error('You must be running docker-compose and API is running as wras_api_1');
+    throw new Error('You must be running docker-compose and API is running as 1800myoptions_api_1');
   }
 
   process.env.POSTGRES_HOST = host;
-}
-
+};

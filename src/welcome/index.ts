@@ -3,10 +3,10 @@ import {default as connection} from '../database/Connection';
 import * as asyncHandler from 'express-async-handler'
 
 export let index = asyncHandler(async (req: Request, res: Response) => {
+  res.json(`Welcome to WRAS API ${process.env.API_VERSION}`);
+
   const db = connection.getDb();
   const data = await db.any('select * from current_date', []);
-
-  res.json(`Welcome to WRAS API ${process.env.API_VERSION}`);
 
   // db.any('select * from current_date', []).then((data: any) => {
   //   console.log(data);
