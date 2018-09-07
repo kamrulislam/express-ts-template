@@ -1,7 +1,7 @@
 /**
  * Created by hxg on 9/10/17.
  */
-import * as traverse from 'traverse';
+import traverse = require('traverse');
 import { createLog } from './logs/logging';
 const log = createLog(__filename);
 
@@ -26,10 +26,6 @@ class AppEnv {
     return flat;
   }
   init (targetEnv: any) {
-    // process.env.FEN_CACHE_API_REQUEST_TIMEOUT = '10000';
-    // log.info('initEnv targetEnv: %s, process.env.FEN_CACHE_API_REQUEST_TIMEOUT: %s',
-    // targetEnv, process.env.FEN_CACHE_API_REQUEST_TIMEOUT);
-
     if(!targetEnv) {
       log.info('initEnv targetEnv is empty using .env');
       return;
@@ -53,12 +49,6 @@ class AppEnv {
       process.env[key] = flats[key];
       log.info('initEnv key: %s, value: %s', key, process.env[key]);
     });
-
-    const version = require('../package.json').version;
-
-    process.env.API_VERSION = version;
-
-    log.info('initEnv API_VERSION: %s', version);
   }
 }
 const env = new AppEnv();

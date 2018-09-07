@@ -6,21 +6,21 @@ import * as request from 'supertest';
 import { app } from '../app';
 
 import { updateDbToHostIp } from '../updatePostgresHost';
-updateDbToHostIp()
+updateDbToHostIp();
 
 describe('index.spec', () => {
-  //const app = require('../app');
+  // const app = require('../app');
   const chai = require('chai');
-  //const request = require('supertest');
+  // const request = require('supertest');
   const expect = chai.expect;
   const assert = chai.assert;
 
-  //const user: JwtUserWithToken = userProfileData.jwtUser1();
+  // const user: JwtUserWithToken = userProfileData.jwtUser1();
 
   it('get', (done) => {
     request(app)
       .get(`/`)
-      //.set('authorization', `Bearer ${user.token}`)
+      // .set('authorization', `Bearer ${user.token}`)
       .expect(200)
       .then((res: any) => {
         const found = prop('body', res);
@@ -32,7 +32,7 @@ describe('index.spec', () => {
       .catch((errors: any) => {
         log.error('errors: %s, %j', errors, errors);
         done(errors);
-      })
-  })
+      });
+  });
 
 });

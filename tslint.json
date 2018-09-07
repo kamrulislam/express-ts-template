@@ -2,7 +2,7 @@
 	"extends": "tslint:recommended",
 	"rules": {
 		"max-line-length": {
-			"options": [120]
+			"options": [5000]
 		},
 		"indent": [true, "spaces", 2],
 		"variable-name": [
@@ -67,6 +67,7 @@
 		"whitespace": [false, "check-branch", "check-typecast"],
 		"member-access": [true, "no-public"],
 		"no-unused-expression": false,
+		"interface-name": [true, "never-prefix"],
 		"rulesDirectory": [
 			"tslint-no-unused-expression-chai"
 		]

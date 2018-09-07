@@ -1,8 +1,7 @@
 /**
  * Created by kis on 3/7/18.
  */
-import * as R from 'ramda';
-const { equals, isNil } = R;
+import { equals, isNil } from '../ramda-functions';
 import connection from './Connection';
 import { camelCase } from '../camelCase';
 import { createLog } from '../logs/logging';
@@ -10,11 +9,11 @@ const log = createLog(__filename);
 const ERROR_404 = '404';
 
 export class DbHelper {
-  findMany (query: string, params: any, transformer: any): Promise<any> {
+  findMany (query: string, params?: any, transformer?: any): Promise<any> {
     log.debug('DbHelper.findMany query: %s, params: %j', query, params);
     const db = connection.getDb();
     return db.any(query, params).then((rows: any) => {
-      return transformer(rows);
+      return isNil(transformer)? rows : transformer(rows);
     })
       .catch((error: any) => {
         log.error('DbHelper.findMany ERROR: %j', error);
@@ -22,7 +21,7 @@ export class DbHelper {
       });
   }
 
-  findOne (query: string, params: any): Promise<any> {
+  findOne (query: string, params?: any): Promise<any> {
     log.debug('DbHelper.findOne query: %s, params: %j', query, params);
     return connection.getDb().any(query, params).then((rows: any) => {
       const first = rows[0];
@@ -44,7 +43,7 @@ export class DbHelper {
 
   transform (rows: any) {
     log.debug('DbHelper.transform rows: %s', rows.length);
-    return rows.map( (row: any) => {
+    return rows.map((row: any) => {
       return camelCase(row).details;
     });
   }

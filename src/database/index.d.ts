@@ -1,4 +1,4 @@
 export interface Query {
-  query:string;
-  params:any;
+  query: string;
+  params: any;
 }

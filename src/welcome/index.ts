@@ -1,19 +1,6 @@
-import { Request, Response } from 'express';
-import {default as connection} from '../database/Connection';
-import * as asyncHandler from 'express-async-handler'
+import {Request, Response} from 'express';
+import * as asyncHandler from 'express-async-handler';
 
 export let index = asyncHandler(async (req: Request, res: Response) => {
-  const db = connection.getDb();
-  const data = await db.any('select * from current_date', []);
-
-  res.json(`Welcome to WRAS API ${process.env.API_VERSION}`);
-
-  // db.any('select * from current_date', []).then((data: any) => {
-  //   console.log(data);
-  //   res.json(data);
-  // })
-  // .catch((error: any) => {
-  //   res.status(500).send('DB connection error: ' + error);
-  // });
-  //res.json(`Welcome to WRAS API ${apiVersion}`);
+  res.json(`Welcome to base API ${process.env.API_VERSION}`);
 });

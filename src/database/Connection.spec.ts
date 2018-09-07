@@ -9,7 +9,7 @@ import { createLog } from '../logs/logging';
 const log = createLog(__filename);
 import {default as connection} from './Connection';
 
-describe('Connection', () => {
+describe.skip('Connection', () => {
   const chai = require('chai');
   const expect = chai.expect;
 
