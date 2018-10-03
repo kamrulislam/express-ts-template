@@ -28,7 +28,7 @@
 		"host-ip": "node scripts/host-ip",
 		"chown": "sudo chown -R $USER:$USER lib"
 	},
-	"author": "",
+	"author": "Hiroki Gota",
 	"license": "ISC",
 	"dependencies": {
 		"aws-sdk": "^2.275.1",
@@ -67,10 +67,12 @@
 		"@types/dotenv": "^4.0.3",
 		"@types/es6-shim": "^0.31.37",
 		"@types/express": "^4.16.0",
+    "@types/express-jwt": "0.0.40",
 		"@types/lodash": "^4.14.110",
 		"@types/mocha": "^5.2.4",
 		"@types/moment-timezone": "^0.5.6",
 		"@types/node": "^10.5.1",
+		"@types/pg-promise": "^5.4.3",
 		"@types/ramda": "^0.25.34",
 		"@types/request-promise": "^4.1.42",
 		"@types/shelljs": "^0.8.0",
