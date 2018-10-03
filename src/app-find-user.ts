@@ -1,8 +1,10 @@
 import * as express from 'express';
 import {NextFunction} from 'express';
+import { asyncMiddleware } from './asyncMiddleware';
 import {createLog} from './logs/logging';
 import {isNil, prop, path} from './ramda-functions';
-import * as asyncHandler from 'express-async-handler';
+
+import * as unless from 'express-unless';
 
 const log = createLog(__filename);
 
@@ -19,7 +21,7 @@ const getUserEmail = (req: express.Request): string => {
   return path(['user', 'email'], req) as string;
 };
 
-const findUser = asyncHandler(async (req: express.Request, res: express.Response, next: NextFunction) => {
+const findUser: any = asyncMiddleware(async (req: express.Request, res: express.Response, next: NextFunction) => {
   const user = prop('user', req);
 
   if(isNil(user)) {
@@ -34,6 +36,8 @@ const findUser = asyncHandler(async (req: express.Request, res: express.Response
     user, user, email);
   next();
 });
+
+findUser.unless = unless;
 
 export {
   findUser,

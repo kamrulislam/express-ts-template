@@ -6,7 +6,7 @@ const { createLogger, format } = winston;
 const { combine, timestamp, label, printf, splat } = format;
 import { contains, isNil } from '../ramda-functions';
 
-const myFormat = printf((info) => {
+const myFormat = printf(info => {
   return `${info.timestamp} [${info.label}] ${info.level}: ${info.message}`;
 });
 

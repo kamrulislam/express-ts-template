@@ -17,7 +17,7 @@ describe('index.spec', () => {
 
   // const user: JwtUserWithToken = userProfileData.jwtUser1();
 
-  it('get', (done) => {
+  it('get',done => {
     request(app)
       .get(`/`)
       // .set('authorization', `Bearer ${user.token}`)

@@ -10,7 +10,7 @@ describe('CamelCase',  () => {
   const expect = chai.expect;
   const camel = require('./CamelCase');
 
-  it('should transform snakeCaseObject to camelCaseObject',  (done) => {
+  it('should transform snakeCaseObject to camelCaseObject',done => {
     const snakeCaseObject = {id:'12345',given_name:'Hiroki',family_name:'Gota',
       alreadyCcamel:'?', what_if_array:[{snake_case:12345}]};
 

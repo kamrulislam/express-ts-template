@@ -18,6 +18,7 @@ export const {
   add,
   multiply,
   toPairs,
+  type,
 } = R;
 
 export const createLensProp = (val: string): any => {
@@ -29,5 +30,5 @@ export const toNumber = (val: string): number => {
   return isNilOrEmpty(val) ? null : +val;
 };
 
-const isStringNullOrNil = (val: string): boolean => equals('null', val) || isNil(val);
+const isStringNullOrNil = (val: string): boolean => equals('null', val) || equals('undefined', val)  || isNil(val);
 export const isNilOrEmpty = either(isStringNullOrNil, isEmpty);

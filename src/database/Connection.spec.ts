@@ -13,7 +13,7 @@ describe.skip('Connection', () => {
   const chai = require('chai');
   const expect = chai.expect;
 
-  it('should connect ', (done) => {
+  it('should connect ',done => {
     const db = connection.getDb();
 
     db.any('select * from current_date', []).then((data: any) => {

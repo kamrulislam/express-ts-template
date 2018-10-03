@@ -6,7 +6,7 @@ const log = createLog(__filename);
 
 describe('datetime', () => {
 
-  it('creates a currentTimestamp', (done) => {
+  it('creates a currentTimestamp',done => {
     console.log(datetime.currentTimestamp());
     const chai = require('chai');
     const expect = chai.expect;
@@ -15,7 +15,7 @@ describe('datetime', () => {
 
     done();
   });
-  it('creates a moment format', (done) => {
+  it('creates a moment format',done => {
     console.log(datetime.moment().format());
     const chai = require('chai');
     const expect = chai.expect;
@@ -25,7 +25,7 @@ describe('datetime', () => {
     done();
   });
 
-  it('creates a momentTz format', (done) => {
+  it('creates a momentTz format',done => {
     console.log(datetime.momentTz().format());
     const chai = require('chai');
     const expect = chai.expect;

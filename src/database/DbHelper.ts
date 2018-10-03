@@ -7,6 +7,7 @@ import { camelCase } from '../camelCase';
 import { createLog } from '../logs/logging';
 const log = createLog(__filename);
 const ERROR_404 = '404';
+import { badImplementation, notFound } from 'boom';
 
 export class DbHelper {
   findMany (query: string, params?: any, transformer?: any): Promise<any> {
@@ -17,7 +18,7 @@ export class DbHelper {
     })
       .catch((error: any) => {
         log.error('DbHelper.findMany ERROR: %j', error);
-        return Promise.reject({statusCode: 500, error: 'There is a database error'});
+        return Promise.reject(badImplementation(`There is a database error: ${error.toString()}`));
       });
   }
 
@@ -33,17 +34,17 @@ export class DbHelper {
     })
       .catch((error: any) => {
         if(equals('Error: 404', error.toString())) {
-          return Promise.reject({statusCode: 404, error: 'No record found'});
+          return Promise.reject(notFound('No record found'));
         }
 
         log.error('DbHelper.findOne error: %j, error: %s, is: %s, typeof: %s', error, error);
-        return Promise.reject({statusCode: 500, error: `Something went wrong: ${error.toString()}`});
+        return Promise.reject(badImplementation(`Something went wrong: ${error.toString()}`));
       });
   }
 
   transform (rows: any) {
     log.debug('DbHelper.transform rows: %s', rows.length);
-    return rows.map((row: any) => {
+    return rows.map( (row: any) => {
       return camelCase(row).details;
     });
   }

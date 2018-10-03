@@ -1,11 +1,12 @@
 // const moment = require('moment-timezone');
 import * as moment from 'moment-timezone';
-import {isNil} from '../ramda-functions';
+import { isNil, isNilOrEmpty } from '../ramda-functions';
 export const timezone = isNil(process.env.TIME_ZONE) ?
   'Australia/Melbourne' : process.env.TIME_ZONE;
 export const datetimeformat = 'YYYY-MM-DD HH:mm:ss';
 const datetimeformatkebab = 'YYYY-MM-DD-HH-mm-ss';
-const datetimeformatiso = 'YYYY-MM-DDTHH:mm:ss';
+export const datetimeformatiso = 'YYYY-MM-DDTHH:mm:ss';
+export const momentz = moment;
 
 export const toDbDate = (val: string): string => {
   return isNil(val) ? null : val;
@@ -24,8 +25,8 @@ class Datetime {
     return moment().tz(timezone).format(datetimeformatkebab);
   }
 
-  currentTimestamp () {
-    return moment().tz(timezone).format(datetimeformat);
+  currentTimestamp (format?: string) {
+    return moment().tz(timezone).format(isNilOrEmpty(format) ? datetimeformat : format);
   }
 
   currentTimestampIso () {

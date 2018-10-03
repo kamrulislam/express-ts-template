@@ -5,6 +5,14 @@ import traverse = require('traverse');
 import { createLog } from './logs/logging';
 const log = createLog(__filename);
 
+const initApiVersion = () => {
+  const version = require('../package.json').version;
+
+  process.env.API_VERSION = version;
+
+  log.debug('initApiVersion API_VERSION: %s', version);
+};
+
 class AppEnv {
   flattern (instance: any, envKey: string): any  {
     const flat: any = {};
@@ -26,6 +34,8 @@ class AppEnv {
     return flat;
   }
   init (targetEnv: any) {
+    initApiVersion();
+
     if(!targetEnv) {
       log.info('initEnv targetEnv is empty using .env');
       return;
@@ -44,11 +54,12 @@ class AppEnv {
 
     const flats = this.flattern(envToFlattern, targetEnv);
 
-    Object.keys(flats).forEach((key) => {
+    Object.keys(flats).forEach(key => {
       // log.info('initEnv key: %s, env[key]: %j', key, env[key]);
       process.env[key] = flats[key];
       log.info('initEnv key: %s, value: %s', key, process.env[key]);
     });
+
   }
 }
 const env = new AppEnv();
