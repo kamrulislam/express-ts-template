@@ -1,4 +1,4 @@
-FROM svgitlab.spatialvision.com.au:4567/vancouver/wras-api:base
+FROM svgitlab.spatialvision.com.au:4567/GROUP/YOUR_PROJECT:base
 
 ADD . /usr/app
 WORKDIR /usr/app

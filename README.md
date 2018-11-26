@@ -41,6 +41,15 @@ POSTGRES_PASSWORD=password
 AUTH0_DOMAIN=your-auth0-domain.au.auth0.com
 ```
 
+# Docker scripts
+Edit Dockerfile and Dockerfile.dev
+```
+# Update FROM clouse with your registry for base
+FROM svgitlab.spatialvision.com.au:4567/GROUP/YOUR_PROJECT:base
+
+```
+
+
 --------------------
 Based on 
 [TypeScript Node Starter](https://github.com/Microsoft/TypeScript-Node-Starter) and [Express Generator](https://github.com/expressjs/generator)
