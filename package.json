@@ -1,6 +1,6 @@
 {
 	"name": "express-ts-template",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Base app for ExpressJs and TypeScript based on expressjs/generator and TypeScript-Node-Starter",
 	"main": "lib/server.js",
 	"scripts": {
@@ -67,7 +67,7 @@
 		"@types/dotenv": "^4.0.3",
 		"@types/es6-shim": "^0.31.37",
 		"@types/express": "^4.16.0",
-    "@types/express-jwt": "0.0.40",
+		"@types/express-jwt": "0.0.40",
 		"@types/lodash": "^4.14.110",
 		"@types/mocha": "^5.2.4",
 		"@types/moment-timezone": "^0.5.6",
