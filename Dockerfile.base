@@ -1,5 +1,5 @@
-FROM node:8.11
+FROM node:chakracore
 
-RUN npm i npm -g@5.6.0
+# RUN npm i npm -g@5.6.0
 
 CMD ["bash"]
