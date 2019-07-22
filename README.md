@@ -49,6 +49,10 @@ FROM svgitlab.spatialvision.com.au:4567/GROUP/YOUR_PROJECT:base
 
 ```
 
+# Ramda and Rambda
+
+https://github.com/selfrefactor/rambda#ramda-methods-missing-in-rambda
+
 
 --------------------
 Based on 

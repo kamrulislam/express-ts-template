@@ -1,4 +1,22 @@
+/**
+ * rambda vs ramda
+ * rambda is simply faster than ramda.
+ * So whatever the function you find in rambda use it, otherwise use ramda
+ * If you list in RB then if there is no function, then typescript will complain for you.
+ * https://github.com/selfrefactor/rambda#benchmark
+ */
 import * as R from 'ramda';
+import * as RB from 'rambda';
+
+export const {
+  and,
+  lensProp,
+  lensPath,
+  view,
+  add,
+  set,
+  over,
+} = R;
 
 export const {
   contains,
@@ -10,16 +28,10 @@ export const {
   isEmpty,
   both,
   either,
-  lensProp,
-  lensPath,
-  view,
-  set,
-  over,
-  add,
   multiply,
   toPairs,
   type,
-} = R;
+} = RB;
 
 export const createLensProp = (val: string): any => {
   return lensProp(val);
