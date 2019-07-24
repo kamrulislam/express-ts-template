@@ -1,5 +1,6 @@
 import * as winston from 'winston';
 import {Logger} from 'winston';
+import { momentz } from '../datetime/DateTime';
 import {LogLevel} from './LogLevel';
 
 const { createLogger, format } = winston;
@@ -8,6 +9,13 @@ import { contains, isNil } from '../ramda-functions';
 
 const myFormat = printf(info => {
   return `${info.timestamp} [${info.label}] ${info.level}: ${info.message}`;
+});
+
+const appendTimestamp = format((info, opts) => {
+  if(opts.tz) {
+    info.timestamp = momentz().tz(opts.tz).format();
+  }
+  return info;
 });
 
 const createLogLabel = (logLabel: string): string => {
@@ -29,7 +37,7 @@ export const createLog = (logLabel: string, logLevel?: LogLevel): Logger => {
     format:
       combine(
         label({ label: createLogLabel(logLabel) }),
-        timestamp(),
+        appendTimestamp({ tz: !!process.env.TZ ? process.env.TZ : 'Australia/Melbourne' }),
         splat(),
         myFormat,
       )

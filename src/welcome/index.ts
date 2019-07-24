@@ -1,6 +1,6 @@
 import { Request, Response, Router } from 'express';
 import { asyncMiddleware } from '../asyncMiddleware';
-import {body, param, validationResult} from 'express-validator/check';
+import {body, param, validationResult} from 'express-validator';
 import {isEmpty, path, prop} from '../ramda-functions';
 import {createLog} from '../logs/logging';
 import { create } from './create';

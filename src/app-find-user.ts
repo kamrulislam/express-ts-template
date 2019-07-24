@@ -5,6 +5,7 @@ import {createLog} from './logs/logging';
 import {isNil, prop, path} from './ramda-functions';
 
 import * as unless from 'express-unless';
+import { JwtRequest } from './types';
 
 const log = createLog(__filename);
 
@@ -21,7 +22,7 @@ const getUserEmail = (req: express.Request): string => {
   return path(['user', 'email'], req) as string;
 };
 
-const findUser: any = asyncMiddleware(async (req: express.Request, res: express.Response, next: NextFunction) => {
+const findUser: any = asyncMiddleware(async (req: JwtRequest, res: express.Response, next: NextFunction) => {
   const user = prop('user', req);
 
   if(isNil(user)) {
