@@ -48,6 +48,7 @@
 		"loglevel": "^1.6.1",
 		"moment": "^2.22.2",
 		"moment-timezone": "^0.5.21",
+		"mongodb": "^3.6.0",
 		"nocache": "^2.0.0",
 		"partial.lenses": "^14.17.0",
 		"pg-monitor": "^1.0.0",
