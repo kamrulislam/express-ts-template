@@ -19,8 +19,8 @@ const getUserEmail = (req: express.Request): string => {
   return path(['user', 'email'], req) as string;
 };
 
-const findUser = asyncHandler(async (req: express.Request, res: express.Response, next: NextFunction) => {
-  const user = prop('user', req);
+const findUser = asyncHandler(async (req: express.Request & {user: string}, res: express.Response, next: NextFunction) => {
+  const user: {[key: string]:string} = prop('user', req) as unknown as {[key: string]:string};
 
   if(isNil(user)) {
     return next({err: 'user not found'});
